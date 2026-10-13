@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Design and Craft Mart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FAF9F6;--ink:#1C2340;--mute:#5B6180;--gold:#B8892D;--card:#FFFFFF;--line:#E3E0D8;--btn:#1C2340;--btnt:#FAF9F6;--rose:#B5445B;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12162B;--ink:#F1EEE6;--mute:#A4A9C4;--gold:#D9AE55;--card:#1B2040;--line:#2E3558;--btn:#D9AE55;--btnt:#12162B;--rose:#E0768C}}
+:root[data-theme="dark"]{--bg:#12162B;--ink:#F1EEE6;--mute:#A4A9C4;--gold:#D9AE55;--card:#1B2040;--line:#2E3558;--btn:#D9AE55;--btnt:#12162B;--rose:#E0768C}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.6;font-size:17px}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+.logo{font-weight:800;font-size:18px;text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.links{display:flex;gap:18px;overflow-x:auto;font-size:15px}
+.links a{text-decoration:none;color:var(--mute);white-space:nowrap}
+section{padding:64px 0}
+h1,h2,h3{line-height:1.15;margin:0 0 12px;font-weight:800}
+h1{font-size:clamp(34px,7vw,60px)}
+h2{font-size:clamp(26px,4.5vw,38px)}
+p{margin:0 0 14px;max-width:62ch}
+.mute{color:var(--mute)}
+.btn{display:inline-block;background:var(--btn);color:var(--btnt);border:0;border-radius:8px;padding:12px 20px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hero .wrap{display:grid;gap:32px;align-items:center}
+@media(min-width:800px){.hero .wrap{grid-template-columns:1.2fr 1fr}}
+.frame{border:10px solid var(--gold);padding:14px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+.mat{background:var(--bg);padding:28px 22px;border:1px solid var(--line);text-align:center;min-height:240px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.mat b{font-size:26px}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.grid{display:grid;gap:20px}
+@media(min-width:760px){.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:6px}
+.art{height:130px;display:grid;place-items:center;margin-bottom:8px;background:var(--bg);border:1px solid var(--line)}
+.a-frame{width:90px;height:90px;border:8px solid var(--gold);background:linear-gradient(135deg,var(--line),var(--bg))}
+.a-card{width:120px;height:70px;background:var(--ink);color:var(--bg);border-radius:4px;padding:8px;font-size:11px;line-height:1.3;text-align:left}
+.a-logo{width:80px;height:80px;border-radius:50%;background:var(--rose);display:grid;place-items:center;color:#fff;font-weight:800;font-size:34px}
+.prod .btn{margin-top:auto;align-self:flex-start}
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:14px;counter-reset:s}
+@media(min-width:760px){.steps{grid-template-columns:repeat(5,1fr)}}
+.steps li{counter-increment:s;border-top:3px solid var(--gold);padding-top:10px}
+.steps li:before{content:counter(s);display:block;font-weight:800;font-size:22px;color:var(--gold)}
+.ph{aspect-ratio:4/3;border:1px dashed var(--mute);display:grid;place-items:center;color:var(--mute);font-size:14px;text-align:center;padding:10px;background:var(--card)}
+blockquote{margin:0;background:var(--card);border-left:4px solid var(--gold);padding:16px 18px}
+.sample{font-size:13px;color:var(--mute)}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--mute);font-size:14px}
+#chatbtn{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:9}
+#chat{position:fixed;right:12px;left:12px;bottom:calc(72px + env(safe-area-inset-bottom,0px));max-width:380px;margin-left:auto;background:var(--card);border:1.5px solid var(--ink);border-radius:10px;display:none;flex-direction:column;height:min(70vh,480px);z-index:9;overflow:hidden}
+#chat.open{display:flex}
+.ch{background:var(--ink);color:var(--bg);padding:12px 14px;font-weight:600}
+#msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:85%;padding:8px 12px;border-radius:10px;font-size:15px;line-height:1.45;white-space:pre-line}
+.m.b{background:var(--bg);border:1px solid var(--line);align-self:flex-start}
+.m.u{background:var(--btn);color:var(--btnt);align-self:flex-end}
+.opts{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start}
+.opts button{background:transparent;border:1.5px solid var(--gold);color:var(--ink);border-radius:20px;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer}
+#cf{display:flex;gap:6px;padding:10px;border-top:1px solid var(--line)}
+#ci{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:10px;font:inherit;font-size:16px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.tabs button{background:transparent;color:var(--ink);border:1.5px solid var(--ink);border-radius:8px;padding:10px 16px;font:inherit;font-weight:600;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--btn);color:var(--btnt);border-color:var(--btn)}
+.detail{display:grid;gap:28px}
+@media(min-width:760px){.detail{grid-template-columns:1fr 1fr}}
+.detail ul{margin:0 0 14px;padding-left:20px}
+.team{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.team li{border-left:4px solid var(--gold);padding:2px 0 2px 14px}
+.fi,.fm input,.fm select,.fm textarea{width:100%;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:11px;font:inherit;font-size:16px}
+.fi{max-width:280px}
+.fm{max-width:560px}
+.fm label{display:block;font-weight:600;margin-bottom:14px}
+.fm input,.fm select,.fm textarea{margin-top:6px;font-weight:400}
+.fm input:focus-visible,.fm select:focus-visible,.fm textarea:focus-visible,.fi:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.tl{list-style:none;padding:0;margin:18px 0 0}
+.tl li{position:relative;padding:6px 0 6px 30px;color:var(--mute)}
+.tl li:before{content:"";position:absolute;left:4px;top:13px;width:12px;height:12px;border-radius:50%;border:2px solid var(--mute)}
+.tl li.done{color:var(--ink)}
+.tl li.done:before{background:var(--gold);border-color:var(--gold)}
+.tl li.now{font-weight:800}
+.note{background:var(--card);border-left:4px solid var(--gold);padding:14px 16px;max-width:560px}
+nav .wrap{justify-content:flex-start}
+.mb{background:transparent;color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:6px 8px;cursor:pointer;display:flex}
+.links{position:fixed;top:0;bottom:0;left:0;width:270px;max-width:84vw;flex-direction:column;gap:2px;overflow-y:auto;background:var(--bg);border-right:1px solid var(--line);padding:calc(72px + env(safe-area-inset-top,0px)) 12px calc(16px + env(safe-area-inset-bottom,0px));z-index:8;transform:translateX(-105%);visibility:hidden;transition:transform .2s,visibility .2s;font-size:17px}
+.links.open{transform:none;visibility:visible}
+.links a{padding:12px 14px;border-radius:8px;color:var(--ink)}
+.links a:hover{background:var(--line)}
+.mc{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:12px;background:transparent;color:var(--ink);border:1.5px solid var(--line);border-radius:8px;width:40px;height:40px;font-size:24px;line-height:1;cursor:pointer}
+#ov{position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.45);z-index:7;display:none}
+#ov.open{display:block}
+[hidden]{display:none!important}
+section:focus{outline:none}
+.links a[aria-current=page]{background:var(--line);font-weight:600}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><button class="mb" id="mb" onclick="menu()" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button><a class="logo" href="#home"><img src="data:image/webp;base64,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" width="34" height="34" alt="DCM logo" style="border-radius:50%;display:block">Design and Craft Mart</a>
+<div class="links" id="drawer"><button class="mc" onclick="menu(false)" aria-label="Close menu">×</button><a href="#home">Home</a><a href="#products">Products</a><a href="#details">Details</a><a href="#how">How it works</a><a href="#work">Portfolio</a><a href="#reviews">Reviews</a><a href="#about">About</a><a href="#order">Order form</a><a href="#contact">Contact</a><button class="btn" style="margin-top:14px" onclick="menu(false);openChat()">Start an order in chat</button></div><div id="ov" onclick="menu(false)"></div></div></nav>
+
+<section class="hero" id="home"><div class="wrap">
+<div><h1>Your photos, cards and logos, made to be noticed.</h1>
+<p class="mute">Photo design and framing, business card design and logo design, made by a small team in Bangladesh. Tell us what you need and we send you a price.</p>
+<div class="row"><button class="btn" onclick="openChat()">Start an order in chat</button><a class="btn alt" href="#products">See what we make</a></div></div>
+<div class="frame" aria-hidden="true"><div class="mat"><span class="mute">Your memory, framed</span><b>Design and Craft Mart</b><span class="mute">Every order gets a custom price</span></div></div>
+</div></section>
+
+<section id="products"><div class="wrap">
+<h2>What we make</h2><p class="mute">Every order is custom, so the price depends on your design. Tell us the details and a partner confirms it.</p>
+<div class="grid g3">
+<div class="prod"><div class="art"><div class="a-frame"></div></div><h3>Photo design and framing</h3><p class="mute">We edit and design your photo, then frame it for gifts, rooms or special days.</p><button class="btn" onclick="openChat('Photo design and framing')">Order this</button></div>
+<div class="prod"><div class="art"><div class="a-card">Your Name<br>Your Business<br>01XXX-XXXXXX</div></div><h3>Business card design</h3><p class="mute">Clean, print-ready cards with your name, contact and brand style.</p><button class="btn" onclick="openChat('Business card design')">Order this</button></div>
+<div class="prod"><div class="art"><div class="a-logo">D</div></div><h3>Logo design</h3><p class="mute">A simple, memorable logo for your page, shop or brand, in files you can use anywhere.</p><button class="btn" onclick="openChat('Logo design')">Order this</button></div>
+</div></div></section>
+
+<section id="details"><div class="wrap">
+<h2>Product details</h2><p class="mute">Pick a product to see what you get and how to start.</p>
+<div class="tabs" id="tabs" role="tablist"></div><div class="detail" id="dt"></div>
+</div></section>
+
+<section id="how"><div class="wrap">
+<h2>How ordering works</h2>
+<ol class="steps">
+<li><b>Chat</b><br><span class="mute">Tell us what you want.</span></li>
+<li><b>Send details</b><br><span class="mute">Photos, text, ideas.</span></li>
+<li><b>Get a price</b><br><span class="mute">A partner confirms price and date.</span></li>
+<li><b>Confirm</b><br><span class="mute">Pay the advance to start.</span></li>
+<li><b>Delivery</b><br><span class="mute">We pack and send it.</span></li>
+</ol></div></section>
+
+<section id="work"><div class="wrap">
+<h2>Our work</h2><p class="mute">Replace these boxes with photos of your finished orders.</p>
+<div class="grid g3"><div class="ph">Photo frame sample</div><div class="ph">Business card sample</div><div class="ph">Logo sample</div></div>
+</div></section>
+
+<section id="reviews"><div class="wrap">
+<h2>What customers say</h2><p class="sample">These are sample lines. Replace them with real reviews from your customers.</p>
+<div class="grid g2">
+<blockquote>Sample: The frame looked even better than the photo I sent.<div class="sample">Customer name</div></blockquote>
+<blockquote>Sample: Fast replies and my business cards were ready on time.<div class="sample">Customer name</div></blockquote>
+</div></div></section>
+
+<section id="about"><div class="wrap">
+<h2>About us</h2>
+<div class="detail"><div>
+<p>Design and Craft Mart is a small team in Bangladesh that makes photo designs and frames, business cards and logos. We began on Facebook and still talk with every customer ourselves.</p>
+<p class="mute">Every order is made for one person or one business, so we agree the details and the price with you before we start.</p></div>
+<ul class="team">
+<li><b>Aias Hossain</b><br><span class="mute">Founder and designer</span></li>
+<li><b>Nuzhat Tabassum Mahi</b><br><span class="mute">Designer</span></li>
+<li><b>Ahad Hossain</b><br><span class="mute">Packaging and delivery</span></li>
+<li><b>Rifat Jahan Omi</b><br><span class="mute">Advisor and advertising</span></li>
+<li><b>Prionty Barua</b><br><span class="mute">Advertising and Instagram</span></li>
+</ul></div></div></section>
+
+<section id="order"><div class="wrap">
+<h2>Send an order request</h2><p class="mute">Prefer a form to chat? Fill it in and a partner replies with the price and delivery date.</p>
+<form class="fm" id="fm">
+<label>Your name<input name="n" required autocomplete="name"></label>
+<label>Phone number<input name="p" type="tel" required autocomplete="tel"></label>
+<label>Product<select name="pr" id="fpr"></select></label>
+<label>What do you want?<textarea name="d" rows="4" required placeholder="Size, text, colors, ideas"></textarea></label>
+<label>Date you need it by (optional)<input name="dt" type="date"></label>
+<p class="mute">After you send this, share your photos or files with us on Facebook, Instagram or WhatsApp.</p>
+<button class="btn" type="submit">Send request</button>
+</form>
+<div class="note" id="ok" hidden></div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+<h2>Talk to us</h2><p class="mute">The fastest way is the chat button. You can also find us here.</p>
+<div class="row"><a class="btn" href="#" onclick="openChat();return false">Open chat</a><a class="btn alt" href="#">Facebook page</a><a class="btn alt" href="#">Instagram</a><a class="btn alt" href="#">WhatsApp</a></div>
+</div></section>
+
+<footer><div class="wrap">Design and Craft Mart. Photo design and framing, business cards, logos.</div></footer>
+
+<button class="btn" id="chatbtn" onclick="openChat()" aria-label="Open chat">Chat with us</button>
+<div id="chat" role="dialog" aria-label="Order chat"><div class="ch">Design and Craft Mart</div><div id="msgs" aria-live="polite"></div>
+<div id="cf"><input id="ci" placeholder="Type here" autocomplete="off"><button class="btn" id="cs">Send</button></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script>
+var M=document.getElementById('msgs'),I=document.getElementById('ci'),O={},step=0,started=false;
+function add(t,w){var d=document.createElement('div');d.className='m '+w;d.textContent=t;M.appendChild(d);M.scrollTop=M.scrollHeight}
+function opts(a){var d=document.createElement('div');d.className='opts';a.forEach(function(x){var b=document.createElement('button');b.textContent=x;b.onclick=function(){d.remove();answer(x)};d.appendChild(b)});M.appendChild(d);M.scrollTop=M.scrollHeight}
+function ask(){
+ if(step==0){add('Welcome to Design and Craft Mart! What would you like to order?','b');opts(['Photo design and framing','Business card design','Logo design','Ask a question'])}
+ else if(step==1)add('What is your name?','b');
+ else if(step==2)add('Your phone number, so a partner can reach you?','b');
+ else if(step==3)add('Describe what you want: size, text, colors, deadline. You can send photos to our partner after confirming.','b');
+ else if(step==4){add('Please check your request:\nProduct: '+O.p+'\nName: '+O.n+'\nPhone: '+O.ph+'\nDetails: '+O.d+'\n\nA partner will confirm the final price and date.','b');opts(['Confirm request','Start over'])}
+}
+function answer(t){
+ add(t,'u');
+ if(step==9){if(t=='Start an order'){step=0;ask();return}askBot(t);return}
+ if(step==0&&t=='Ask a question'){step=9;add('Sure, what would you like to know?','b');return}
+ if(step==0){O.p=t;step=1}
+ else if(step==1){O.n=t;step=2}
+ else if(step==2){O.ph=t;step=3}
+ else if(step==3){O.d=t;step=4}
+ else if(step==4){
+  if(t=='Confirm request'){step=5;submitReq(O.n,O.ph,O.p,O.d,'Chat',null,function(ref){add('Request '+ref+' received. Status: Pending. A partner will contact you soon with the price and delivery date.','b')},function(){step=4;add('Sorry, we could not send your request. Please try again, or message us on Facebook.','b');opts(['Confirm request','Start over'])});return}
+  O={};step=0}
+ else{add('Your request is already pending. Refresh the page to start a new one.','b');return}
+ ask()}
+function send(){var v=I.value.trim();if(!v||step==0||step==4||step==5)return;I.value='';answer(v)}
+function openChat(p){document.getElementById('chat').classList.add('open');if(!started){started=true;ask()}
+ if(p&&step==0){M.querySelectorAll('.opts').forEach(function(e){e.remove()});answer(p)}
+ I.focus()}
+var PD={'Photo design and framing':{d:'We edit and design your photo, then prepare it for framing as a gift or for your wall.',inc:['Photo cleanup and layout design','Frame style and size agreed with you','Careful packing for delivery'],s:'Send the photo in the best quality you have, and tell us the size you want.'},'Business card design':{d:'A clean, print-ready business card with your name, contact details and brand style.',inc:['Front and back layout','Your logo, colors and text','A print-ready file'],s:'Send your name, job title, phone, address and logo if you have one.'},'Logo design':{d:'A simple, memorable logo for your page, shop or brand.',inc:['Logo made around your name and idea','Versions for light and dark backgrounds','Files you can use on social media and print'],s:'Tell us your brand name, what you sell and any colors or styles you like.'}};
+var sb=window.supabase.createClient(DCM.SUPABASE_URL,DCM.SUPABASE_ANON_KEY);
+var SRC=(new URLSearchParams(location.search).get('src')||'').replace(/[^a-zA-Z0-9 _-]/g,'').slice(0,30);
+var SID=sessionStorage.getItem('dcm_sid');if(!SID){SID=crypto.randomUUID();sessionStorage.setItem('dcm_sid',SID)}
+function submitReq(n,p,pr,d,chan,due,ok,fail){
+ sb.rpc('submit_request',{p_name:n,p_phone:p,p_product:pr,p_details:d,p_source:SRC||chan,p_deadline:due||null}).then(function(r){if(r.error||!r.data)fail();else ok(r.data)}).catch(fail)}
+function askBot(t){add('...','b');var w=M.lastChild;
+ fetch(DCM.SUPABASE_URL+'/functions/v1/chat',{method:'POST',headers:{'Content-Type':'application/json',apikey:DCM.SUPABASE_ANON_KEY},body:JSON.stringify({session_id:SID,message:t})}).then(function(r){return r.json()}).then(function(j){w.textContent=j.reply||'Sorry, I could not answer that. A partner will help you soon.';opts(['Start an order'])}).catch(function(){w.textContent='Sorry, something went wrong. Please try again.';opts(['Start an order'])})}
+var tabs=document.getElementById('tabs'),dt=document.getElementById('dt'),fpr=document.getElementById('fpr');
+function showP(k){Array.prototype.forEach.call(tabs.children,function(b){b.setAttribute('aria-selected',b.textContent==k)});var p=PD[k];
+ dt.innerHTML='<div><h3>'+k+'</h3><p>'+p.d+'</p><h3>What you get</h3><ul>'+p.inc.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div><div class="prod"><h3>How to start</h3><p>'+p.s+'</p><p class="mute">Price and delivery date are custom. A partner confirms both before you pay.</p><button class="btn" id="dtb">Order this</button></div>';
+ document.getElementById('dtb').onclick=function(){openChat(k)}}
+Object.keys(PD).forEach(function(k){var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.textContent=k;b.onclick=function(){showP(k)};tabs.appendChild(b);var o=document.createElement('option');o.textContent=k;fpr.appendChild(o)});
+showP('Photo design and framing');
+document.getElementById('fm').onsubmit=function(e){e.preventDefault();var f=e.target,ok=document.getElementById('ok'),btn=f.querySelector('button[type=submit]');btn.disabled=true;
+ submitReq(f.n.value,f.p.value,f.pr.value,f.d.value,'Order form',f.dt.value,function(ref){
+  ok.textContent='Request received. Your reference is '+ref+'. Status: Pending. A partner will contact '+f.n.value+' on '+f.p.value+' with the price and delivery date.';ok.hidden=false;f.hidden=true;ok.scrollIntoView({block:'center'})},
+  function(){btn.disabled=false;ok.textContent='Sorry, we could not send your request. Please check your details and try again, or message us on Facebook.';ok.hidden=false});};
+function menu(o){var d=document.getElementById('drawer'),v=(o===undefined)?!d.classList.contains('open'):o;d.classList.toggle('open',v);document.getElementById('ov').classList.toggle('open',v);document.getElementById('mb').setAttribute('aria-expanded',v)}
+Array.prototype.forEach.call(document.querySelectorAll('.links a'),function(a){a.addEventListener('click',function(){menu(false)})});
+document.addEventListener('keydown',function(e){if(e.key=='Escape')menu(false)});
+var PG=Array.prototype.slice.call(document.querySelectorAll('body > section'));
+function route(){var id=(location.hash||'#home').slice(1);if(!PG.some(function(s){return s.id==id}))id='home';
+ PG.forEach(function(s){s.hidden=s.id!=id});
+ Array.prototype.forEach.call(document.querySelectorAll('.links a'),function(a){if(a.getAttribute('href')=='#'+id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+ window.scrollTo(0,0)}
+window.addEventListener('hashchange',route);route();
+document.getElementById('cs').onclick=send;
+I.addEventListener('keydown',function(e){if(e.key=='Enter')send()});
+</script>
+</body>
+</html>
