@@ -6,10 +6,9 @@
 *A customer storefront and a private partner dashboard, working together as one.*
  
 <br>
-![Status](https://img.shields.io/badge/status-live%20development-C9A227?style=for-the-badge)
-![Access](https://img.shields.io/badge/partners-invite%20only-1a1a1a?style=for-the-badge)
-![Customers](https://img.shields.io/badge/customers-no%20sign--in%20needed-2e7d32?style=for-the-badge)
- 
+<img src="https://img.shields.io/badge/status-live%20development-C9A227?style=for-the-badge" alt="Status">
+<img src="https://img.shields.io/badge/partners-invite%20only-1a1a1a?style=for-the-badge" alt="Access">
+<img src="https://img.shields.io/badge/customers-no%20sign--in%20needed-2e7d32?style=for-the-badge" alt="Customers">
 </div>
 ---
  
