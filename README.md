@@ -1,70 +1,112 @@
-# Design and Craft Mart website
-
-A customer website and a partner admin dashboard, sharing one Supabase database.
-
-```
-index.html                     customer website (menu pages, order form, chat)
-admin/index.html               partner admin (sign in, requests, customers, sync, team)
-config.js                      your Supabase address and publishable key
-supabase/schema.sql            database tables and security rules
-supabase/functions/chat        chat bot that answers customer questions (Claude)
-supabase/functions/sync-partner   sends accepted orders to the partners website
-supabase/functions/invite-partner founder invites partners by email
-```
-
-Customers never sign in. Partners sign in at `/admin/`, by invitation only.
-
-## Setup (do these in order)
-
-**1. Upload the files to GitHub.**
-Open the repo, press Add file > Upload files, drag in everything from this folder (keep the folders), and press Commit.
-
-**2. Create the database tables.**
-Supabase > SQL Editor > New query. Paste the whole of `supabase/schema.sql` and press Run. Run it only once.
-
-**3. Stop strangers from signing up.**
-Supabase > Authentication > Sign In / Providers > Email. Turn OFF "Allow new users to sign up". (Invites still work.)
-
-**4. Add your publishable key.**
-Supabase > Project Settings > API Keys. Copy the **Publishable key** and paste it into `config.js` in place of `PASTE_YOUR_PUBLISHABLE_KEY_HERE`. Never paste a secret or service_role key into any file.
-
-**5. Create your own founder account.**
-Supabase > Authentication > Users > Add user > Create new user. Enter your email and a password, and tick "Auto Confirm User". Then go to SQL Editor and run this (use your email):
-
-```sql
-insert into profiles (id, full_name, role)
-select id, 'Aias Hossain', 'founder' from auth.users where email = 'YOUR_EMAIL_HERE';
-```
-
-**6. Publish the three functions.**
-Supabase > Edge Functions > Deploy a new function > Via Editor. Make one function for each folder in `supabase/functions` (names must be exactly `chat`, `sync-partner`, `invite-partner`). Paste the code from its `index.ts`. For each one, switch OFF "Verify JWT" (the functions check logins themselves), then Deploy.
-
-Then Edge Functions > Secrets, and add:
-
-| Secret | Value |
+<div align="center">
+# ✦ Design and Craft Mart ✦
+ 
+### Where handmade ideas become beautiful orders
+ 
+*A customer storefront and a private partner dashboard, working together as one.*
+ 
+<br>
+![Status](https://img.shields.io/badge/status-live%20development-C9A227?style=for-the-badge)
+![Access](https://img.shields.io/badge/partners-invite%20only-1a1a1a?style=for-the-badge)
+![Customers](https://img.shields.io/badge/customers-no%20sign--in%20needed-2e7d32?style=for-the-badge)
+ 
+</div>
+---
+ 
+## 🌿 About the Project
+ 
+**Design and Craft Mart** is a web platform built for a creative craft and design business. It gives customers a simple, beautiful place to explore products and place orders, and gives the business team a private workspace to manage every request from the first message to the final delivery.
+ 
+The goal is simple: **make ordering effortless for customers, and make running the business effortless for partners.**
+ 
+---
+ 
+## 🎯 Why It Exists
+ 
+Handmade and custom-design businesses often run on scattered messages, notes and memory. Orders get lost, prices are forgotten, and deadlines slip.
+ 
+This project brings everything into one clean system:
+ 
+- Customers can order in a minute, with no account and no password.
+- Partners see every request in one place, with price, advance and deadline.
+- Nothing falls through the cracks.
+---
+ 
+## ✨ Features
+ 
+### 🛍️ For Customers
+ 
+| | |
 |---|---|
-| `ANTHROPIC_API_KEY` | your Claude API key (console.anthropic.com) |
-| `SITE_URL` | the address of your admin page, e.g. `https://yoursite.com/admin/` |
-| `PARTNER_API_URL` | the partners website address that receives orders (add when ready) |
-| `PARTNER_API_KEY` | the secret key that partners endpoint expects (add when ready) |
-
-**7. Put the website online.**
-Easiest: Vercel (vercel.com) > Add New > Project > import this GitHub repo > Deploy. No settings needed.
-
-**8. Tell Supabase your website address.**
-Supabase > Authentication > URL Configuration. Set Site URL to your website address, and add `https://yoursite.com/admin/` under Redirect URLs.
-
-## Test it
-1. Open the website, send an order from the Order form. 
-2. Open `/admin/`, sign in, and you should see the request in Requests inbox.
-3. Open it, enter price, advance and deadline, press Accept. 
-4. Sync status shows "Not sent" until the partners website address is set (step 6). That is expected.
-5. Team and roles > invite a partner. They get an email to set a password.
-
-## Not built yet
-Live chats, Products manager, Bot settings, Message templates, Notifications and Reports are still design only. Until the Products manager exists, edit products and the bot's FAQ in Supabase > Table Editor (`products`, `bot_settings`).
-
-## Partners website
-`sync-partner` sends this JSON (POST, header `x-api-key`) to `PARTNER_API_URL`:
-`reference, type ("Lead" or "Order"), customer {name, phone}, product, details, price, advance, due, source`.
-The partners website needs a small endpoint that checks the key and creates the Lead or Order.
+| **Browse** | Explore the menu of products and designs |
+| **Order instantly** | Send a request through a simple order form, with no sign-in |
+| **Ask anything** | A friendly chat assistant answers common questions at any hour |
+ 
+### 🧑‍🎨 For Partners
+ 
+| | |
+|---|---|
+| **Requests inbox** | Every new order and lead arrives in one organised list |
+| **Accept with details** | Set the price, advance payment and deadline in one step |
+| **Customer records** | Keep track of who ordered what |
+| **Sync to partners site** | Accepted orders are passed on automatically as Leads or Orders |
+| **Team and roles** | The founder invites partners by email and manages access |
+ 
+---
+ 
+## 🔐 Access and Privacy
+ 
+- **Customers** never need to create an account.
+- **Partners** can only join by **invitation** from the founder.
+- Public sign-up is closed, so only trusted people reach the dashboard.
+---
+ 
+## 🧭 How It Works
+ 
+```
+   Customer                    Partner Dashboard                 Partners Website
+ ┌───────────┐   order    ┌──────────────────────┐   accepted   ┌────────────────┐
+ │  Browse   │ ─────────▶ │  Requests inbox      │ ───────────▶ │  Lead / Order  │
+ │  & Order  │            │  Price · Advance ·   │     sync     │    created     │
+ └───────────┘            │  Deadline · Accept   │              └────────────────┘
+       ▲                  └──────────────────────┘
+       │                             │
+       └──── Chat assistant ◀────────┘
+```
+ 
+1. A customer places an order or asks a question.
+2. The request appears instantly in the partner dashboard.
+3. A partner reviews it and accepts it with price, advance and deadline.
+4. The accepted order is sent on to the partners website.
+---
+ 
+## 🗺️ Roadmap
+ 
+| Status | Feature |
+|:---:|---|
+| ✅ | Customer website and order form |
+| ✅ | Chat assistant for customer questions |
+| ✅ | Partner sign-in by invitation |
+| ✅ | Requests inbox and order acceptance |
+| ✅ | Customer list |
+| ✅ | Sync of accepted orders to the partners website |
+| ✅ | Team and roles |
+| 🔜 | Live chats view |
+| 🔜 | Products manager |
+| 🔜 | Assistant settings |
+| 🔜 | Message templates |
+| 🔜 | Notifications |
+| 🔜 | Reports |
+ 
+---
+ 
+## 👤 Founder
+ 
+**Aias Hossain**
+ 
+---
+ 
+<div align="center">
+*Crafted with care. Every order matters.* ✦
+ 
+</div>
