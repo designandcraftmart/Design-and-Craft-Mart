@@ -4,5 +4,5 @@
 // NEVER paste the "secret" or "service_role" key into this file.
 window.DCM = {
   SUPABASE_URL: 'https://ztaeeitonqywqzpcynnj.supabase.co',
-  SUPABASE_ANON_KEY: 'PASTE_YOUR_PUBLISHABLE_KEY_HERE'
+  SUPABASE_ANON_KEY: 'sb_publishable_QMScQ32Rfeyu3P0becifKg_NryyM4Ii'
 };
