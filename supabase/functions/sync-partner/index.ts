@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Sends an accepted request to the partners website (as a Lead, or as an Order).
 // Turn "Verify JWT" OFF when deploying (this function checks the partner's login itself).
 // Secrets needed: PARTNER_API_URL, PARTNER_API_KEY (the partners website endpoint and its secret key).

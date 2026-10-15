@@ -1,3 +1,4 @@
+   // @ts-nocheck
 // Founder invites a partner by email. The partner gets a link to set a password.
 // Turn "Verify JWT" OFF when deploying (this function checks the founder's login itself).
 // Secret needed: SITE_URL (the address of your admin page, for example https://yoursite.com/admin/).

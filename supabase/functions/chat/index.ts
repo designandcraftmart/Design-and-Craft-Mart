@@ -1,3 +1,4 @@
+   // @ts-nocheck
 // Customer chat bot. Public endpoint: turn "Verify JWT" OFF when deploying.
 // Secrets needed: ANTHROPIC_API_KEY. Optional: CHAT_MODEL (default claude-haiku-5-5).
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.4'
