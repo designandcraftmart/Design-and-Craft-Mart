@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Design & Craft Mart | Crafting Memories, Create Your Smile",
+    "description": "Personalized photo frames, mugs, t-shirts and custom gifts made just for you in Chittagong. Chat with our team to order, delivery all over Bangladesh."
+  },
+  "brand": {
+    "name": "Design & Craft Mart",
+    "tagline": "Crafting Memories, Create Your Smile"
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "logoAlt": "Design & Craft Mart logo",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation",
+    "languageLabel": "Language",
+    "close": "Close menu"
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "howToOrder": "How to Order",
+    "about": "About",
+    "contact": "Contact",
+    "chat": "Chat",
+    "menu": "Menu"
+  },
+  "hero": {
+    "title": "Turn your favorite moments into gifts they will never forget.",
+    "subtitle": "Photo frames, mugs, t-shirts and more, made just for you.",
+    "browse": "Browse Products",
+    "orderChat": "Order via Chat"
+  },
+  "placeholder": {
+    "comingSoon": "This page is coming soon.",
+    "backHome": "Back to Home"
+  },
+  "floatingChat": {
+    "label": "Chat with us"
+  },
+  "footer": {
+    "contactHeading": "Contact us",
+    "followHeading": "Follow us",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "madeWithLove": "Made with love in Chittagong."
+  }
+}
