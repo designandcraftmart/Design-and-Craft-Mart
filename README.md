@@ -54,6 +54,9 @@ src/lib/site.ts                phone, WhatsApp, email and social links
 src/lib/supabase/client.ts     Supabase client for Client Components
 src/lib/supabase/server.ts     Supabase client for Server Components and actions
 src/components/                Header, BottomNav, Footer, LanguageToggle, FloatingChatButton
+src/components/ui/             Design system: Button, Card, Chip, Input, Textarea, Select, Modal,
+                               Toast, Skeleton, SectionHeading, ProductCard, EmptyState, ErrorState
+src/app/[lang]/styleguide/     /en/styleguide and /bn/styleguide: every component and variant (not in nav)
 src/app/[lang]/layout.tsx      root layout (html lang, fonts, header, footer)
 src/app/[lang]/page.tsx        Home (hero)
 src/app/[lang]/*/page.tsx      temporary "coming soon" pages: shop, how-to-order, about, contact, chat

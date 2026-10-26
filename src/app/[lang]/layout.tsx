@@ -5,6 +5,7 @@ import BottomNav from "@/components/BottomNav";
 import FloatingChatButton from "@/components/FloatingChatButton";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { ToastProvider } from "@/components/ui/Toast";
 import { getDictionary } from "@/lib/dictionaries";
 import { locales } from "@/lib/i18n";
 import { site } from "@/lib/site";
@@ -49,6 +50,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${baloo.variable} ${hind.variable}`}>
       <body className="flex min-h-dvh flex-col">
+        <ToastProvider dismissLabel={dict.ui.dismiss}>
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-pill focus:bg-white focus:px-4 focus:py-2 focus:font-semibold focus:shadow-soft"
@@ -76,6 +78,7 @@ export default async function RootLayout({
             languageLabel: dict.common.languageLabel,
           }}
         />
+        </ToastProvider>
       </body>
     </html>
   );

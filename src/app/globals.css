@@ -67,7 +67,59 @@ html[lang="bn"] h4 {
 :focus-visible {
   outline: 3px solid var(--color-violet);
   outline-offset: 3px;
-  border-radius: 6px;
+}
+
+/*
+ * Focus ring for Button, fields and other UI components: teal ring (brand
+ * focus color) with a thin Ink ring inside it, so it stays visible (3:1+)
+ * on white and cream backgrounds, where teal alone is only about 2.4:1.
+ */
+.ui-focus:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--color-ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes sheet-up {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: none;
+    }
+  }
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes toast-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  dialog[open].ui-modal {
+    animation: sheet-up 250ms ease-out;
+  }
+  @media (min-width: 40rem) {
+    dialog[open].ui-modal {
+      animation: pop-in 200ms ease-out;
+    }
+  }
+  .toast-in {
+    animation: toast-in 200ms ease-out;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
