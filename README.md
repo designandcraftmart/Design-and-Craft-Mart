@@ -43,7 +43,8 @@ Never put the `service_role` key in any `NEXT_PUBLIC_` variable or in client cod
 
 ## Project layout
 
-```
+````text
+
 public/brand/dcm-logo.png      PLACEHOLDER logo, replace with the real transparent PNG
 src/proxy.ts                   redirects any path without /en or /bn to /en
 src/dictionaries/en.json       English text
@@ -77,3 +78,47 @@ and are available as Tailwind classes such as `bg-coral`, `bg-sunset`, `rounded-
 - This Next.js version renames Middleware to Proxy (`src/proxy.ts`) and has Cache Components on.
   Read the matching guide in `node_modules/next/dist/docs/` before changing routing or caching.
 - Add every new page under `src/app/[lang]/` and every new string to both JSON dictionaries.
+
+## Database (Supabase)
+
+Files: `supabase/migrations/0001_init.sql` (schema, RLS, storage, triggers), `supabase/seed.sql` (categories, 6 sample products, contact settings), `src/types/database.ts`, `scripts/test-rls.mjs`.
+
+### 1. Run the migration
+
+Easiest (no CLI): Supabase dashboard > SQL Editor > paste `0001_init.sql` > Run, then paste `seed.sql` > Run.
+
+With the CLI:
+
+```bash
+npx supabase login
+npx supabase link --project-ref mwkmrfebmmnrzuodeewd
+npx supabase db push
+```
+
+A hosted project is not seeded by `db push`, so run `supabase/seed.sql` in the SQL Editor afterwards.
+
+### 2. Enable Anonymous Sign-Ins (required for guest chat)
+
+Dashboard > Authentication > Sign In / Providers > turn on **Allow anonymous sign-ins**. Before launch, also turn on CAPTCHA (Authentication > Attack Protection) so bots cannot create endless guests.
+
+### 3. Create the first owner
+
+First, in the dashboard go to Authentication > Users > **Add user** (email and password, tick Auto Confirm).
+
+Then, in the SQL Editor, using that email:
+
+```sql
+insert into public.admin_profiles (user_id, name, role)
+select id, 'Your Name', 'owner' from auth.users where email = 'you@example.com';
+```
+
+Further partners are added later by the owner from the admin area (Task 7).
+
+### 4. Regenerate types and test
+
+```bash
+npx supabase gen types typescript --project-id mwkmrfebmmnrzuodeewd --schema public > src/types/database.ts
+node --env-file=.env.local scripts/test-rls.mjs
+```
+
+Expected: every line says PASS.
