@@ -1,4 +1,4 @@
-# Website Build Plan with Claude Code
+# Claude Code
 
 A step-by-step plan for building a website with Claude Code, adapted from the "Build an AI Agent in 10 Minutes" guide. Steps 1 to 5 are used; step 6 is optional and comes later.
 
