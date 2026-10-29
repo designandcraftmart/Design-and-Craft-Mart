@@ -12,7 +12,7 @@ export const site = {
   emailHref: "mailto:designandcraftmart@gmail.com",
   instagramHandle: "designandcraftmart",
   instagramHref: "https://www.instagram.com/designandcraftmart/",
-  facebookName: "Design & Craft Mart",
+  facebookName: "https://www.facebook.com/designandcraftmart",
   // TODO: paste the real Facebook page URL. While empty, the footer shows the
   // page name as plain text instead of a link.
   facebookHref: "",
