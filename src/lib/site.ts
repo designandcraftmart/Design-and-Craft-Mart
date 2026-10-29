@@ -12,9 +12,9 @@ export const site = {
   emailHref: "mailto:designandcraftmart@gmail.com",
   instagramHandle: "designandcraftmart",
   instagramHref: "https://www.instagram.com/designandcraftmart/",
-  facebookName: "https://www.facebook.com/designandcraftmart",
+  facebookName: "Design & Craft Mart",
   // TODO: paste the real Facebook page URL. While empty, the footer shows the
   // page name as plain text instead of a link.
-  facebookHref: "",
+  facebookHref: "https://www.facebook.com/designandcraftmart/",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 } as const;
