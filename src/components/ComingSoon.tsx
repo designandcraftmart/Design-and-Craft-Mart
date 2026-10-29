@@ -6,7 +6,9 @@ export type ComingSoonPage =
   | "howToOrder"
   | "about"
   | "contact"
-  | "chat";
+  | "chat"
+  | "deliveryPayment"
+  | "cancellationPolicy";
 
 /**
  * Temporary page body so every header, footer and bottom-nav link works.

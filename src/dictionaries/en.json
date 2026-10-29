@@ -22,13 +22,64 @@
     "about": "About",
     "contact": "Contact",
     "chat": "Chat",
-    "menu": "Menu"
+    "menu": "Menu",
+    "deliveryPayment": "Delivery & Payment",
+    "cancellationPolicy": "Cancellation Policy"
   },
   "hero": {
     "title": "Turn your favorite moments into gifts they will never forget.",
     "subtitle": "Photo frames, mugs, t-shirts and more, made just for you.",
     "browse": "Browse Products",
     "orderChat": "Order via Chat"
+  },
+  "home": {
+    "categories": {
+      "title": "Choose your gift",
+      "subtitle": "Pick a category and see what we can create for you."
+    },
+    "featured": {
+      "title": "Our featured gifts",
+      "subtitle": "Start here or tell us your own idea in chat.",
+      "viewAll": "View all products"
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "subtitle": "Get your personalized gift in four easy steps.",
+      "steps": [
+        "Choose your product.",
+        "Chat with our team.",
+        "Confirm your order and pay the delivery charge in advance.",
+        "Pay the rest on delivery when it reaches your door."
+      ],
+      "learnMore": "Learn more about ordering"
+    },
+    "trust": {
+      "label": "Why choose us",
+      "items": [
+        "Made just for you",
+        "Premium quality",
+        "Home delivery in Chittagong",
+        "Real people in chat"
+      ]
+    },
+    "delivery": {
+      "title": "Delivery & payment",
+      "subtitle": "Home delivery is now available in Chittagong. All-Bangladesh delivery is coming soon.",
+      "chittagongTitle": "Chittagong",
+      "chittagongBody": "We bring your gift straight to your door.",
+      "chittagongBadge": "Available now",
+      "bangladeshTitle": "Across Bangladesh",
+      "bangladeshBody": "We are preparing delivery nationwide.",
+      "bangladeshBadge": "Coming soon",
+      "paymentTitle": "How payment works",
+      "paymentBody": "We confirm the delivery charge after address confirmation, and you pay the advance by bKash or cash. The rest is cash on delivery.",
+      "readMore": "Read more about delivery & payment"
+    }
+  },
+  "policy": {
+    "cancellationTitle": "Cancellation policy",
+    "cancellationText": "To receive a refund of the advance payment, cancel at least 5 days before delivery. For orders outside Chittagong, cancelling less than 2 days before delivery means paying the advance plus 30% of the total cost.",
+    "readMore": "Read the full policy"
   },
   "placeholder": {
     "comingSoon": "This page is coming soon.",

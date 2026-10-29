@@ -10,7 +10,7 @@ export default async function Header() {
 
   const items: NavItem[] = [
     { href: base, label: dict.nav.home, exact: true },
-    { href: `${base}/shop`, label: dict.nav.shop },
+    { href: `${base}/products`, label: dict.nav.shop },
     { href: `${base}/how-to-order`, label: dict.nav.howToOrder },
     { href: `${base}/about`, label: dict.nav.about },
     { href: `${base}/contact`, label: dict.nav.contact },

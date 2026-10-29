@@ -60,7 +60,7 @@ export default function BottomNav({
 
   const items = [
     { href: base, label: labels.home, Icon: House, exact: true },
-    { href: `${base}/shop`, label: labels.shop, Icon: Store, exact: false },
+    { href: `${base}/products`, label: labels.shop, Icon: Store, exact: false },
     {
       href: `${base}/chat`,
       label: labels.chat,
